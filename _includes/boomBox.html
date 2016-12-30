@@ -1,0 +1,28 @@
+<div class="boomBox">
+
+    <div class="speakerLeft speakerBoom" id = "speaker-Left" ></div>
+
+    <div class="seekplayer">
+        <div id="screen">
+            <div id="timebox">
+                <span id="curtimetext">00:00</span> / <span id="durtimetext">00:00</span>
+            </div>
+        </div>
+        <input type="range" id="seekslider" min="0" max="100" value="0" onchange = 'seekSong()' >
+    </div>
+
+    <div class="controls">
+        <div class="button review"></div>
+        <div class="button cue"></div>
+        <div class="button play" id="playbtn"></div>
+        <div class="button pause" id="pausebtn"></div>
+    </div>
+
+    <div class="volume">
+        <input id="volumeslider" type="range" min='0' max='100' value="100" step="10" orient='vertical'>
+        <div class="mute" id="mutebtn"></div>
+    </div>
+
+    <div class="speakerRight speakerBoom" id = "speaker-Right" ></div>
+
+</div>

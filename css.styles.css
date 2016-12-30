@@ -1,0 +1,97 @@
+.boomBox {
+  background: url("../assets/img/boomBox");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 500px;
+  width: 800px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+  .boomBox .controls {
+    background-color: black;
+    position: relative;
+    height: 40px;
+    width: 158px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-52%, 368%);
+    -moz-transform: translate(-52%, 368%);
+    -ms-transform: translate(-52%, 368%);
+    -o-transform: translate(-52%, 368%);
+    transform: translate(-52%, 368%);
+    display: flex;
+    justify-content: center; }
+    .boomBox .controls .button {
+      display: inline-block;
+      background: url("../assets/img/button");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 40px;
+      width: 42px;
+      cursor: pointer; }
+    .boomBox .controls .button:active {
+      background: url("../assets/img/button-pressed");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center; }
+    .boomBox .controls .buttonPressed {
+      display: inline-block;
+      background: url("../assets/img/button-pressed");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 40px;
+      width: 40px;
+      cursor: pointer; }
+    .boomBox .controls .review {
+      border-bottom-left-radius: 12px; }
+    .boomBox .controls .pause {
+      border-bottom-right-radius: 12px; }
+  .boomBox .volume {
+    height: 47px;
+    width: 149px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(89%, -276%);
+    -moz-transform: translate(89%, -276%);
+    -ms-transform: translate(89%, -276%);
+    -o-transform: translate(89%, -276%);
+    transform: translate(89%, -276%); }
+    .boomBox .volume .mute {
+      background: url("../assets/img/mute");
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      height: 18px;
+      width: 23px;
+      top: 50%;
+      left: 74%;
+      cursor: pointer; }
+    .boomBox .volume .mutePressed {
+      background: url("../assets/img/mutePressed");
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      height: 18px;
+      width: 23px;
+      top: 50%;
+      left: 74%;
+      cursor: pointer; }
+
+body {
+  background-color: #9DF0FF; }
+
+/*# sourceMappingURL=css.styles.css.map */
