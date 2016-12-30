@@ -2,7 +2,7 @@ var audio, play, pause, mutebtn, sun, speakerBoom, seekslider, volumeslider, see
 audio = new Audio ();
 seekslider = document.getElementById("seekslider");
 function initAudioPlayer() {
-    audio.src = "../assets/music/BLOCKHEAD The Art of Walking.mp3";
+    audio.src = "https://raw.githubusercontent.com/Taylor-S/BoomBox/master/assets/music/Blockhead%20-%20Its%20Raining%20Clouds.mp3";
     audio.loop = true;
     audio.autoplay = false;
     // set obj ref
