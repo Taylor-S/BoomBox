@@ -1,27 +1,40 @@
-var audio, play, pause, mutebtn, sun, speakerBoom, seekslider, volumeslider, seeking=false, seekto, curtimetext, durtimetext;
+var audio, play, pause, mutebtn, sun, speakerBoom, seekslider, volumeslider, curtimetext, durtimetext, dir, ext, playlist, playlist_status, playlist_index, cue, review;
 audio = new Audio ();
 seekslider = document.getElementById("seekslider");
+
 function initAudioPlayer() {
-    audio.src = "https://raw.githubusercontent.com/Taylor-S/BoomBox/master/assets/music/Blockhead%20-%20Its%20Raining%20Clouds.mp3";
-    audio.loop = true;
-    audio.autoplay = false;
+
     // set obj ref
     play = document.getElementById('playbtn');
     pause = document.getElementById('pausebtn');
+    cue = document.getElementById('cue');
+    review = document.getElementById('review');
     mutebtn = document.getElementById('mutebtn');
     volumeslider = document.getElementById("volumeslider");
-    curtimetext = document.getElementById('curtimetext')
-    durtimetext = document.getElementById('durtimetext')
+    curtimetext = document.getElementById('curtimetext');
+    durtimetext = document.getElementById('durtimetext');
     sun = document.getElementById('sunSpin');
     speakerBoom = $('.speakerBoom');
+    playlist_status = document.getElementById('playlist_status');
+    dir = '../assets/music/'
+    ext = '.mp3'
+    playlist = ['Blockhead - The Art of Walking', 'Blockhead - Its Raining Clouds','Adam Hinden - Laniakea', 'AK & Direct - Sleepless Nights', 'Crywolf - Anachronism Crystal Skies Remix', 'Ether - As if time stood still', 'Fadent - Time Apart', 'Kisnou - Same Destiny' ]
+    playlist_index = 0
+
+    // audio object
+    audio.src = dir + playlist[playlist_index] + ext;
+    audio.loop = false;
+    audio.autoplay = true;
+    playlist_status.innerHTML =  playlist_status.innerHTML = " <span id = 'blackLines'>---------------------------------------------------</span> " + 'Now playing: ' + playlist[playlist_index] + " <span id = 'blackLines'>---------------------------------------------------</span> " ;
+
     // add event handling
     play.addEventListener("click", playMusic);
     pause.addEventListener("click", pauseMusic);
     mutebtn.addEventListener("click", mute);
-    // seekslider.addEventListener("mousedown", function(){ seeking=true; seek; });
-	// seekslider.addEventListener("mousemove", seek);
-	// seekslider.addEventListener("mouseup",function(){ seeking=false; });
     volumeslider.addEventListener("mousemove", setvolume);
+    cue.addEventListener("click", switchTrack);
+    review.addEventListener("click", previousTrack);
+    audio.addEventListener('ended', function() {switchTrack(); });
     audio.addEventListener('timeupdate', seektimeupdate);
 
 
@@ -42,6 +55,38 @@ function initAudioPlayer() {
         speakerBoom.removeClass('speaker');
     }
     /////////////////////////////////////////
+    function switchTrack () {
+        if (playlist_index == playlist.length - 1) {
+            playlist_index = 0;
+        }
+        else {
+            playlist_index++;
+        }
+        playlist_status.innerHTML = " <span id = 'blackLines'>---------------------------------------------------</span> " + 'Now playing: ' + playlist[playlist_index] + " <span id = 'blackLines'>---------------------------------------------------</span> " ;
+        pause.className = 'button';
+        speakerBoom.addClass('speaker');
+        sun.className = 'sun sunRotate';
+        play.className = 'buttonPressed';
+        audio.src = dir + playlist[playlist_index] + ext;
+        audio.play();
+    }
+    /////////////////////////////////////////
+    function previousTrack () {
+        if (playlist_index == 0) {
+            playlist_index = playlist.length - 1;
+        }
+        else {
+            playlist_index--;
+        }
+        playlist_status.innerHTML = " <span id = 'blackLines'>---------------------------------------------------</span> " + 'Now playing: ' + playlist[playlist_index] + " <span id = 'blackLines'>---------------------------------------------------</span> " ;
+        pause.className = 'button';
+        speakerBoom.addClass('speaker');
+        sun.className = 'sun sunRotate';
+        play.className = 'buttonPressed';
+        audio.src = dir + playlist[playlist_index] + ext;
+        audio.play();
+    }
+    /////////////////////////////////////////
     function mute () {
         if (audio.muted) {
             audio.muted = false;
@@ -53,14 +98,6 @@ function initAudioPlayer() {
             mutebtn.className = 'mutePressed';
             speakerBoom.removeClass('speaker');
         }
-    }
-    //////////////////////////////////////////////
-    function seek(event){
-	    if(seeking){
-		    seekslider.value = event.clientX - seekslider.offsetLeft;
-	        seekto = audio.duration * (seekslider.value / 100);
-	        audio.currentTime = seekto;
-	    }
     }
     /////////////////////////////////////////////////////
     function setvolume(){
@@ -100,7 +137,21 @@ function initAudioPlayer() {
 function seekSong () {
 audio.currentTime = seekslider.value/100 * audio.duration;
 }
+//////////////////////////////////////////////////
 
+// boomBox screen scroller
+function autoScroll () {
+    box = document.getElementById('content_scroller');
+    max = box.scrollWidth-box.clientWidth;
 
+    if (box.scrollLeft < max) {
+        box.scrollLeft++;
+
+    } else {
+        box.scrollLeft = -500;
+
+    }
+}
 
 window.addEventListener("load", initAudioPlayer);
+window.addEventListener("load", setInterval(function() {autoScroll() ;}, 30));

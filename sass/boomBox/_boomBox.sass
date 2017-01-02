@@ -159,6 +159,39 @@
             cursor: pointer
             border-radius: 2px
 
+        // vendor prefixes chrome
+
+        input[type=range]::-webkit-slider-thumb
+            background:  #616060
+            border: 1px solid #4d4c4c
+            border-left: 1px solid  #8a8a8a
+            height: 20px
+            box-shadow: 2px 2px 5px black
+            width: 7px
+            cursor: pointer
+            border-radius: 2px
+
+        // vendor prefixes Internet Explorer
+        input[type='range']::-ms-fill-lower
+            background-color: #252525
+        input[type='range']::-ms-fill-upper
+            background-color: #252525
+
+
+        input[type='range']::-ms-thumb
+            background:  #616060
+            border: 1px solid #4d4c4c
+            border-left: 1px solid  #8a8a8a
+            height: 20px
+            box-shadow: 2px 2px 5px black
+            width: 7px
+            cursor: pointer
+            border-radius: 2px
+        ///////////////////////////////////////////////////////
+
+
+
+
 
         #screen
             position: relative
@@ -169,21 +202,39 @@
             top: 15px
             left: 0px
             display: flex
-            justify-content: flex-end
+            justify-content: space-between
             align-items: center
             z-index: -1
             border-radius: 3px
+            border-left: 4px solid black
+
+            #content_scroller
+                overflow: hidden
+                width: 68%
+                display: flex
+                padding-top: 2px
+
+
+                #playlist_status
+                    padding-left: 5px
+                    white-space: nowrap
+                    font-size: 8px
+                    visibility: visible
+
+                    #blackLines
+                        color: black
 
 
 
             #timebox
                 position: relative
                 display: flex
-                justify-content: center
-                padding-right: 4px
+                justify-content: flex-start
+                padding-left: 4px
                 font-size: 8px
                 width: 54px
                 border-left: 1px dotted yellow
+                overflow: hidden
 
     // volume css/////////////////////////////////
     .volume
@@ -228,7 +279,35 @@
             cursor: pointer
             border-radius: 2px
 
+        // vendor prefixes chrome
 
+        input[type='range']::-webkit-slider-thumb
+            background:  #616060
+            border: 1px solid #4d4c4c
+            border-left: 1px solid  #8a8a8a
+            height: 7px
+            box-shadow: 2px 2px 5px black
+            width: 20px
+            cursor: pointer
+            border-radius: 2px
+
+        // vendor prefixes internet explorer
+        input[type='range']::-ms-fill-lower
+            background: #252525
+
+        input[type='range']::-ms-fill-upper
+            background: #252525
+
+        input[type='range']::-ms-thumb
+            background:  #616060
+            border: 1px solid #4d4c4c
+            border-left: 1px solid  #8a8a8a
+            height: 7px
+            box-shadow: 2px 2px 5px black
+            width: 20px
+            cursor: pointer
+            border-radius: 2px
+        ////////////////////////////////////////////////////
 
 
         .mute
