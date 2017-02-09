@@ -2,6 +2,8 @@
 
 Project made to test and improve my skills as a web developer.
 
+Project can be found at: http://boomboxmusic.herobo.com/
+
 This web app is an audio player with a skin which was designed using Inkscape and Gimp.
 
 Jekyll static site builder was also utilized to speed-up workflow.
